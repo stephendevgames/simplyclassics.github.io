@@ -1,42 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SimplyClassics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SimplyClassics | Indie Unity Developer</title>
+  <meta name="description" content="Portfolio website for SimplyClassics - Unity/C# indie developer projects and demos." />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #ffffff;
-      max-width: 800px;
-      margin: auto;
-      padding: 40px;
-      line-height: 1.6;
+    :root {
+      --bg: #0b0d12;
+      --panel: #111522;
+      --text: #e8ecf6;
+      --muted: #aab4cc;
+      --accent: #6ea8fe;
+      --accent2: #7ee787;
+      --border: rgba(255,255,255,0.09);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --max: 980px;
     }
-    a {
-      color: #4ea1ff;
-      text-decoration: none;
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(110,168,254,0.18), transparent 60%),
+                  radial-gradient(900px 600px at 85% 20%, rgba(126,231,135,0.14), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 60px; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0 22px;
+      position: sticky;
+      top: 0;
+      background: linear-gradient(to bottom, rgba(11,13,18,0.92), rgba(11,13,18,0.65), rgba(11,13,18,0));
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(110,168,254,0.95), rgba(126,231,135,0.9));
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hero {
+      margin-top: 14px;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(17,21,34,0.75);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(600px 300px at 10% 0%, rgba(110,168,254,0.22), transparent 55%),
+                  radial-gradient(550px 280px at 90% 10%, rgba(126,231,135,0.17), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; display: grid; gap: 14px; }
+    .kicker { color: var(--muted); }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; }
+    .subtitle { margin: 0; color: var(--muted); max-width: 62ch; }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+    .btn:active { transform: translateY(1px); }
+
+    .btn.primary {
+      border-color: rgba(110,168,254,0.45);
+      background: linear-gradient(135deg, rgba(110,168,254,0.26), rgba(126,231,135,0.14));
+    }
+
+    section { margin-top: 26px; }
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+    }
+    .section-desc { margin: 0 0 16px; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      grid-column: span 12;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(17,21,34,0.7);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    @media (min-width: 760px) {
+      .card.half { grid-column: span 6; }
+      .card.third { grid-column: span 4; }
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+
+    .project-title { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .project-title h3 { margin: 0; font-size: 18px; }
+    .tag { font-size: 12px; color: var(--muted); }
+
+    .project-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .small { font-size: 13px; color: var(--muted); }
+
+    footer {
+      margin-top: 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .contact-box {
+      display: grid;
+      gap: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
     }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>SimplyClassics</div>
+      </div>
 
-<h1>SimplyClassics</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-<p>
-SimplyClassics is a solo indie game studio focused on developing classic-inspired games with modern design principles.
-</p>
+    <main>
+      <div class="hero" id="top">
+        <div class="hero-inner">
+          <div class="kicker">Indie Developer | Unity | C#</div>
+          <h1>Building small, polished games with classic inspiration.</h1>
+          <p class="subtitle">
+            This site showcases my Unity projects, demos, and development progress. Below is a playable
+            portfolio-style overview with a video demo link for my Tic Tac Toe project.
+          </p>
 
-<h2>Contact</h2>
-<p>
-<a href="mailto:contact@simplyclassics.dev">contact@simplyclassics.dev</a>
-</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </div>
 
-<h2>Links</h2>
-<ul>
-  <li><a href="https://youtu.be/riIaPxBx2Bs" target="_blank">Demo Video (YouTube)</a></li>
-</ul>
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <p class="section-desc">
+          I’m an indie Unity developer working with C# and .NET. I focus on clean UI, responsive input,
+          and building small projects that demonstrate core gameplay systems and solid code structure.
+        </p>
 
+        <div class="grid">
+          <div class="card half">
+            <h3 style="margin:0 0 8px;">Skills</h3>
+            <div class="pill">Unity</div>
+            <div class="pill">C#</div>
+            <div class="pill">UI</div>
+            <div class="pill">Game State</div>
+            <div class="pill">Input Handling</div>
+          </div>
+
+          <div class="card half">
+            <h3 style="margin:0 0 8px;">What I’m improving</h3>
+            <p class="small" style="margin:0;">
+              Better game feel, cleaner menus, tighter feedback loops, and more complete demos
+              with clear visuals and audio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-desc">
+          Here are my current portfolio demos and development updates.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="project-title">
+              <h3>Tic Tac Toe (Unity)</h3>
+              <span class="tag">Video demo</span>
+            </div>
+
+            <p class="small" style="margin:10px 0 0;">
+              A clean Tic Tac Toe implementation focusing on UI flow, turn control, win checks, and reset logic.
+              Demo video includes gameplay and menu flow.
+            </p>
+
+            <div class="project-actions">
+              <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank" rel="noopener noreferrer">
+                Watch Demo on YouTube
+              </a>
+              <a class="btn" href="#contact">Ask about the project</a>
+            </div>
+
+            <p class="note">
+              Link updated: https://youtu.be/KjEZP_vEK5E
+            </p>
+          </div>
+
+          <div class="card half">
+            <div class="project-title">
+              <h3>Next Project</h3>
+              <span class="tag">In progress</span>
+            </div>
+            <p class="small" style="margin:10px 0 0;">
+              Add your next game here. You can include a short description and a button to an itch.io page,
+              GitHub repo, or another demo video.
+            </p>
+          </div>
+
+          <div class="card half">
+            <div class="project-title">
+              <h3>Tools / Notes</h3>
+              <span class="tag">Workflow</span>
+            </div>
+            <p class="small" style="margin:10px 0 0;">
+              OBS recording, clear build settings, and short demos that show the core loop quickly.
+              Keep links current and easy to access.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-desc">
+          If you want to reach me about a project, use the form below (or replace this with your email address).
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <form class="contact-box" onsubmit="return handleSubmit(event);">
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <input id="email" name="email" type="email" placeholder="Your email" required />
+              <textarea id="message" name="message" placeholder="Your message" required></textarea>
+              <button class="btn primary" type="submit">Send</button>
+              <div class="note" id="formNote"></div>
+            </form>
+
+            <p class="note">
+              This form is a simple front-end placeholder (no backend). If you want it to actually send emails,
+              you can connect it to a service like Formspree, Netlify Forms, or your own server.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> SimplyClassics. Built with HTML/CSS.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const note = document.getElementById("formNote");
+      note.textContent = "Thanks! This form is a placeholder and does not send yet.";
+
+      event.target.reset();
+      return false;
+    }
+  </script>
 </body>
 </html>
+
