@@ -96,21 +96,10 @@
       border: 1px solid var(--border);
       background: rgba(17,21,34,0.75);
       box-shadow: var(--shadow);
-      overflow: hidden;
       position: relative;
-    }
-
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: radial-gradient(600px 300px at 10% 0%, rgba(110,168,254,0.22), transparent 55%),
-                  radial-gradient(550px 280px at 90% 10%, rgba(126,231,135,0.17), transparent 55%);
-      pointer-events: none;
     }
 
     .hero-inner {
-      position: relative;
       display: grid;
       gap: 14px;
     }
@@ -137,26 +126,12 @@
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
       padding: 11px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.03);
-      color: var(--text);
       font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
     }
-
-    .btn:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.16);
-    }
-
-    .btn:active { transform: translateY(1px); }
 
     .btn.primary {
       border-color: rgba(110,168,254,0.45);
@@ -168,7 +143,6 @@
     .section-title {
       margin: 0 0 10px;
       font-size: 20px;
-      letter-spacing: 0.2px;
     }
 
     .section-desc {
@@ -193,35 +167,6 @@
 
     @media (min-width: 760px) {
       .card.half { grid-column: span 6; }
-      .card.third { grid-column: span 4; }
-    }
-
-    .project-title {
-      display: flex;
-      gap: 10px;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-
-    .project-title h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .tag {
-      font-size: 12px;
-      color: var(--muted);
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .project-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
     }
 
     .small {
@@ -235,56 +180,6 @@
       text-align: center;
       font-size: 13px;
     }
-
-    .contact-box {
-      display: grid;
-      gap: 10px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      font: inherit;
-      outline: none;
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    .note {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .skill-group { margin-bottom: 14px; }
-
-    .skill-label {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    .skill-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .skill-pill {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      font-size: 13px;
-      color: var(--text);
-    }
   </style>
 </head>
 
@@ -292,10 +187,9 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo"></div>
         <div>SimplyClassics</div>
       </div>
-
       <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -304,15 +198,13 @@
     </header>
 
     <main>
-      <div class="hero" id="top">
+      <div class="hero">
         <div class="hero-inner">
           <div class="kicker">Indie Developer | Unity | C#</div>
           <h1>Building small, polished games with classic inspiration.</h1>
           <p class="subtitle">
-            This site showcases my Unity projects, demos, and development progress. Below is a video demo link
-            for my Tic Tac Toe project.
+            This site showcases my Unity projects, demos, and development progress.
           </p>
-
           <div class="cta-row">
             <a class="btn primary" href="#projects">View Projects</a>
             <a class="btn" href="#contact">Get in Touch</a>
@@ -323,190 +215,62 @@
       <section id="about">
         <h2 class="section-title">About</h2>
         <p class="section-desc">
-          I’m an indie Unity developer working with C# and .NET. I focus on clean UI, responsive input,
-          and small projects that demonstrate core gameplay systems and solid code structure.
+          I’m an indie Unity developer working with C#. I focus on building small, complete projects
+          that demonstrate clean UI flow, responsive input, and clear game state logic.
         </p>
 
         <div class="grid">
           <div class="card">
-            <h3 style="margin:0 0 12px;">Core Skills</h3>
-
-            <div class="skill-group">
-              <span class="skill-label">Game Development</span>
-              <div class="skill-row">
-                <span class="skill-pill">Unity</span>
-                <span class="skill-pill">C#</span>
-                <span class="skill-pill">UI Systems</span>
-                <span class="skill-pill">Input Handling</span>
-                <span class="skill-pill">Game State Management</span>
-                <span class="skill-pill">Debugging & Optimisation</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-label">Front-End Development</span>
-              <div class="skill-row">
-                <span class="skill-pill">JavaScript (ES6+)</span>
-                <span class="skill-pill">TypeScript</span>
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">Next.js</span>
-                <span class="skill-pill">HTML5</span>
-                <span class="skill-pill">CSS3 / SCSS</span>
-                <span class="skill-pill">Responsive Design</span>
-                <span class="skill-pill">Component Architecture</span>
-                <span class="skill-pill">Accessible UI</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-label">Back-End & Full-Stack</span>
-              <div class="skill-row">
-                <span class="skill-pill">Node.js</span>
-                <span class="skill-pill">Express.js</span>
-                <span class="skill-pill">REST APIs</span>
-                <span class="skill-pill">Auth (Authentication & Authorisation)</span>
-                <span class="skill-pill">Secure App Design</span>
-                <span class="skill-pill">SSR (Next.js)</span>
-                <span class="skill-pill">API Integration</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-label">Databases</span>
-              <div class="skill-row">
-                <span class="skill-pill">MongoDB</span>
-                <span class="skill-pill">Data Modelling</span>
-                <span class="skill-pill">CRUD Operations</span>
-                <span class="skill-pill">Foundational SQL</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-label">Deployment & Tooling</span>
-              <div class="skill-row">
-                <span class="skill-pill">Vercel</span>
-                <span class="skill-pill">Netlify</span>
-                <span class="skill-pill">Production Deployments</span>
-                <span class="skill-pill">Env Configuration</span>
-                <span class="skill-pill">Custom Domains & DNS</span>
-                <span class="skill-pill">SSL / HTTPS</span>
-                <span class="skill-pill">Git & GitHub</span>
-                <span class="skill-pill">npm</span>
-                <span class="skill-pill">Postman</span>
-                <span class="skill-pill">Chrome DevTools</span>
-                <span class="skill-pill">VS Code</span>
-              </div>
-            </div>
-
-            <div class="skill-group" style="margin-bottom:0;">
-              <span class="skill-label">Development Practices</span>
-              <div class="skill-row">
-                <span class="skill-pill">Clean, Maintainable Code</span>
-                <span class="skill-pill">Debugging & Troubleshooting</span>
-                <span class="skill-pill">Performance Optimisation</span>
-                <span class="skill-pill">Secure Coding Practices</span>
-                <span class="skill-pill">Version Control Best Practices</span>
-              </div>
-            </div>
-
+            <h3 style="margin-top:0;">What I Focus On</h3>
+            <p class="small">
+              I enjoy taking simple game ideas and polishing them into clear, playable demos.
+              My work emphasises UI-driven gameplay, readable code, and iteration through testing
+              and refinement rather than large unfinished concepts.
+            </p>
           </div>
         </div>
       </section>
 
       <section id="projects">
         <h2 class="section-title">Projects</h2>
-        <p class="section-desc">
-          Current portfolio demos and development updates.
-        </p>
+        <p class="section-desc">Current portfolio demos and development updates.</p>
 
         <div class="grid">
           <div class="card">
-            <div class="project-title">
-              <h3>Tic Tac Toe (Unity)</h3>
-              <span class="tag">Video demo</span>
-            </div>
-
-            <p class="small" style="margin:10px 0 0;">
-              A clean Tic Tac Toe implementation focusing on UI flow, turn control, win checks, and reset logic.
-              The demo video includes gameplay and menu flow.
+            <h3 style="margin-top:0;">Tic Tac Toe (Unity)</h3>
+            <p class="small">
+              A clean Unity implementation focusing on UI flow, turn handling, win detection,
+              and reset logic. Demonstrates structured game state and menu control.
             </p>
-
-            <div class="project-actions">
-              <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank" rel="noopener noreferrer">
-                Watch Demo on YouTube
-              </a>
-              <a class="btn" href="#contact">Ask about the project</a>
-            </div>
+            <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank">Watch Demo</a>
           </div>
 
           <div class="card half">
-            <div class="project-title">
-              <h3>Upcoming Project</h3>
-              <span class="tag">Planning</span>
-            </div>
-            <p class="small" style="margin:10px 0 0;">
-              My next project will expand on UI flow, player feedback, and overall game feel in Unity.
-              I’m aiming for a more complete demo with clear menus, better moment-to-moment feedback,
-              and tighter controls.
+            <h3 style="margin-top:0;">Upcoming Project</h3>
+            <p class="small">
+              My next project will build on player feedback, UI clarity, and overall game feel,
+              aiming for a more complete and polished Unity demo.
             </p>
           </div>
 
           <div class="card half">
-            <div class="project-title">
-              <h3>What I’m Improving</h3>
-              <span class="tag">In progress</span>
-            </div>
-            <p class="small" style="margin:10px 0 0;">
-              I’m focusing on game feel, cleaner UI and menus, stronger feedback (audio/visual cues),
-              and more polished demos that clearly show the core systems working.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-desc">
-          If you want to reach me about a project, use the form below (or replace this with your email address).
-        </p>
-
-        <div class="grid">
-          <div class="card">
-            <form class="contact-box" onsubmit="return handleSubmit(event);">
-              <input id="name" name="name" type="text" placeholder="Your name" required />
-              <input id="email" name="email" type="email" placeholder="Your email" required />
-              <textarea id="message" name="message" placeholder="Your message" required></textarea>
-              <button class="btn primary" type="submit">Send</button>
-              <div class="note" id="formNote"></div>
-            </form>
-
-            <p class="note">
-              This form is a front-end placeholder (no backend). If you want it to actually send emails,
-              connect it to a service like Formspree, Netlify Forms, or your own server.
+            <h3 style="margin-top:0;">What I’m Improving</h3>
+            <p class="small">
+              Game feel, cleaner menus, stronger visual and audio feedback,
+              and clearer presentation of core gameplay systems.
             </p>
           </div>
         </div>
       </section>
 
       <footer>
-        © <span id="year"></span> SimplyClassics. Built with HTML/CSS.
+        © <span id="year"></span> SimplyClassics
       </footer>
     </main>
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const note = document.getElementById("formNote");
-      note.textContent = "Thanks! This form is a placeholder and does not send yet.";
-
-      event.target.reset();
-      return false;
-    }
   </script>
 </body>
 </html>
