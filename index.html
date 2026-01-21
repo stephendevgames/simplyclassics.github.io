@@ -21,6 +21,7 @@
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -32,7 +33,12 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 60px; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
 
     header {
       display: flex;
@@ -103,12 +109,33 @@
       pointer-events: none;
     }
 
-    .hero-inner { position: relative; display: grid; gap: 14px; }
-    .kicker { color: var(--muted); }
-    h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; }
-    .subtitle { margin: 0; color: var(--muted); max-width: 62ch; }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      gap: 14px;
+    }
 
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+    .kicker { color: var(--muted); }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -123,7 +150,12 @@
       cursor: pointer;
       transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
     }
-    .btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.16);
+    }
+
     .btn:active { transform: translateY(1px); }
 
     .btn.primary {
@@ -132,12 +164,17 @@
     }
 
     section { margin-top: 26px; }
+
     .section-title {
       margin: 0 0 10px;
       font-size: 20px;
       letter-spacing: 0.2px;
     }
-    .section-desc { margin: 0 0 16px; color: var(--muted); }
+
+    .section-desc {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
 
     .grid {
       display: grid;
@@ -159,23 +196,38 @@
       .card.third { grid-column: span 4; }
     }
 
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      margin-right: 8px;
-      margin-top: 8px;
+    .project-title {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      flex-wrap: wrap;
     }
 
-    .project-title { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
-    .project-title h3 { margin: 0; font-size: 18px; }
-    .tag { font-size: 12px; color: var(--muted); }
+    .project-title h3 {
+      margin: 0;
+      font-size: 18px;
+    }
 
-    .project-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .small { font-size: 13px; color: var(--muted); }
+    .tag {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
 
     footer {
       margin-top: 34px;
@@ -207,6 +259,33 @@
       font-size: 12px;
       color: var(--muted);
     }
+
+    /* Skills (Option 1: grouped with context) */
+    .skill-group { margin-bottom: 14px; }
+
+    .skill-label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .skill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .skill-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      font-size: 13px;
+      color: var(--text);
+    }
   </style>
 </head>
 
@@ -231,8 +310,8 @@
           <div class="kicker">Indie Developer | Unity | C#</div>
           <h1>Building small, polished games with classic inspiration.</h1>
           <p class="subtitle">
-            This site showcases my Unity projects, demos, and development progress. Below is a playable
-            portfolio-style overview with a video demo link for my Tic Tac Toe project.
+            This site showcases my Unity projects, demos, and development progress. Below is a video demo link
+            for my Tic Tac Toe project.
           </p>
 
           <div class="cta-row">
@@ -246,27 +325,44 @@
         <h2 class="section-title">About</h2>
         <p class="section-desc">
           I’m an indie Unity developer working with C# and .NET. I focus on clean UI, responsive input,
-          and building small projects that demonstrate core gameplay systems and solid code structure.
+          and small projects that demonstrate core gameplay systems and solid code structure.
         </p>
 
         <div class="grid">
           <div class="card half">
-            <h3 style="margin:0 0 8px;">Skills</h3>
-            <div class="pill">Unity</div>
-            <div class="pill">C#</div>
-            <div class="pill">UI</div>
-            <div class="pill">Game State</div>
-            <div class="pill">Input Handling</div>
+            <h3 style="margin:0 0 12px;">Core Skills</h3>
+
+            <div class="skill-group">
+              <span class="skill-label">Engine & Language</span>
+              <div class="skill-row">
+                <span class="skill-pill">Unity</span>
+                <span class="skill-pill">C#</span>
+              </div>
+            </div>
+
+            <div class="skill-group" style="margin-bottom:0;">
+              <span class="skill-label">Gameplay & UI Systems</span>
+              <div class="skill-row">
+                <span class="skill-pill">UI</span>
+                <span class="skill-pill">Input Handling</span>
+                <span class="skill-pill">Game State</span>
+              </div>
+            </div>
           </div>
 
-      
+          <div class="card half">
+            <h3 style="margin:0 0 8px;">What I’m improving</h3>
+            <p class="small" style="margin:0;">
+              Better game feel, cleaner menus, and more complete demos with clearer visuals and feedback.
+            </p>
+          </div>
         </div>
       </section>
 
       <section id="projects">
         <h2 class="section-title">Projects</h2>
         <p class="section-desc">
-          Here are my current portfolio demos and development updates.
+          Current portfolio demos and development updates.
         </p>
 
         <div class="grid">
@@ -278,7 +374,7 @@
 
             <p class="small" style="margin:10px 0 0;">
               A clean Tic Tac Toe implementation focusing on UI flow, turn control, win checks, and reset logic.
-              Demo video includes gameplay and menu flow.
+              The demo video includes gameplay and menu flow.
             </p>
 
             <div class="project-actions">
@@ -287,29 +383,17 @@
               </a>
               <a class="btn" href="#contact">Ask about the project</a>
             </div>
-
-        
           </div>
 
           <div class="card half">
             <div class="project-title">
-              <h3>Next Project</h3>
-              <span class="tag">Upcoming</span>
+              <h3>Upcoming Project</h3>
+              <span class="tag">Planning</span>
             </div>
             <p class="small" style="margin:10px 0 0;">
-            I’m currently focusing on polishing and refining my existing projects.
-            My next project is in the planning phase and will expand on UI flow, player feedback, and overall game feel in Unity.
-            </p>
-          </div>
-
-          <div class="card half">
-            <div class="project-title">
-              <h3>Tools / Notes</h3>
-              <span class="tag">Workflow</span>
-            </div>
-            <p class="small" style="margin:10px 0 0;">
-              OBS recording, clear build settings, and short demos that show the core loop quickly.
-              Keep links current and easy to access.
+              I’m currently focusing on polishing and refining my existing projects.
+              My next project is in the planning phase and will expand on UI flow, player feedback,
+              and overall game feel in Unity.
             </p>
           </div>
         </div>
@@ -332,8 +416,8 @@
             </form>
 
             <p class="note">
-              This form is a simple front-end placeholder (no backend). If you want it to actually send emails,
-              you can connect it to a service like Formspree, Netlify Forms, or your own server.
+              This form is a front-end placeholder (no backend). If you want it to actually send emails,
+              connect it to a service like Formspree, Netlify Forms, or your own server.
             </p>
           </div>
         </div>
@@ -360,4 +444,5 @@
   </script>
 </body>
 </html>
+
 
