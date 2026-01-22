@@ -8,7 +8,6 @@
 
   <style>
     :root {
-      /* Logo-matched palette */
       --bg-0: #1A2836;
       --bg-1: #1E2C3B;
       --panel: rgba(255,255,255,0.045);
@@ -16,8 +15,6 @@
       --muted: #C7CBCD;
 
       --accent: #CAAC5E;
-      --accent-soft: rgba(202,172,94,0.18);
-
       --border: rgba(255,255,255,0.10);
       --shadow: 0 18px 45px rgba(0,0,0,0.45);
 
@@ -44,7 +41,7 @@
     .wrap {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 18px 60px;
+      padding: 28px 18px 80px;
     }
 
     header {
@@ -65,7 +62,6 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      letter-spacing: 0.5px;
     }
 
     .brand img {
@@ -73,26 +69,22 @@
       height: 42px;
       border-radius: 999px;
       border: 1px solid rgba(202,172,94,0.35);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
     }
 
     nav {
       display: flex;
       gap: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     nav a {
       padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid transparent;
       color: var(--muted);
     }
 
     nav a:hover {
       color: var(--text);
-      border-color: var(--border);
+      border: 1px solid var(--border);
       background: rgba(255,255,255,0.04);
     }
 
@@ -110,25 +102,18 @@
       gap: 14px;
     }
 
-    .kicker { color: var(--muted); }
-
     h1 {
       margin: 0;
       font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
     }
 
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      max-width: 62ch;
-    }
+    .subtitle { color: var(--muted); }
 
     .cta-row {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .btn {
@@ -137,21 +122,18 @@
       border: 1px solid rgba(202,172,94,0.45);
       background: transparent;
       font-weight: 700;
-      color: var(--text);
-      display: inline-block;
     }
 
     .btn.primary {
       background: var(--accent);
       color: #1A2836;
       border: none;
-      box-shadow: 0 12px 30px rgba(202,172,94,0.25);
     }
 
-    section { margin-top: 26px; }
-
-    /* Helps anchor links land nicely below sticky header */
-    section { scroll-margin-top: 105px; }
+    section {
+      margin-top: 40px;
+      scroll-margin-top: 120px;
+    }
 
     .section-title {
       margin: 0 0 10px;
@@ -178,36 +160,15 @@
       padding: 18px;
     }
 
-    @media (min-width: 760px) {
-      .card.half { grid-column: span 6; }
-    }
-
     .small {
       font-size: 13px;
       color: var(--muted);
     }
 
-    .contact-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .pill {
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
     footer {
-      margin-top: 34px;
-      color: var(--muted);
+      margin-top: 50px;
       text-align: center;
+      color: var(--muted);
       font-size: 13px;
     }
   </style>
@@ -230,7 +191,7 @@
     <main>
       <div class="hero">
         <div class="hero-inner">
-          <div class="kicker">Indie Developer | Unity | C#</div>
+          <div class="subtitle">Indie Developer | Unity | C#</div>
           <h1>Building small, polished games with classic inspiration.</h1>
           <p class="subtitle">
             This site showcases my Unity projects, demos, and development progress.
@@ -246,70 +207,45 @@
         <h2 class="section-title">About</h2>
         <p class="section-desc">
           I’m an indie Unity developer working with C#. I focus on building small, complete projects
-          that demonstrate clean UI flow, responsive input, and clear game state logic.
+          that demonstrate clean UI flow and clear game state logic.
         </p>
-
-        <div class="grid">
-          <div class="card">
-            <h3 style="margin-top:0;">What I Focus On</h3>
-            <p class="small">
-              I enjoy taking simple game ideas and polishing them into clear, playable demos.
-              My work emphasises UI-driven gameplay, readable code, and iteration through testing
-              and refinement rather than large unfinished concepts.
-            </p>
-          </div>
-        </div>
       </section>
 
       <section id="projects">
         <h2 class="section-title">Projects</h2>
-        <p class="section-desc">Current portfolio demos and development updates.</p>
+        <p class="section-desc">Current portfolio demos.</p>
 
         <div class="grid">
           <div class="card">
-            <h3 style="margin-top:0;">Tic Tac Toe (Unity)</h3>
+            <h3>Tic Tac Toe (Unity)</h3>
             <p class="small">
-              A clean Unity implementation focusing on UI flow, turn handling, win detection,
-              and reset logic. Demonstrates structured game state and menu control.
+              A clean Unity implementation focusing on UI flow, turn handling, win detection, and reset logic.
             </p>
-            <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank" rel="noopener">Watch Demo</a>
-          </div>
-
-          <div class="card half">
-            <h3 style="margin-top:0;">Upcoming Project</h3>
-            <p class="small">
-              My next project will build on player feedback, UI clarity, and overall game feel,
-              aiming for a more complete and polished Unity demo.
-            </p>
-          </div>
-
-          <div class="card half">
-            <h3 style="margin-top:0;">What I’m Improving</h3>
-            <p class="small">
-              Game feel, cleaner menus, stronger visual and audio feedback,
-              and clearer presentation of core gameplay systems.
-            </p>
+            <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank" rel="noopener">
+              Watch Demo
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- Added Contact section so #contact links work -->
+      <!-- ✅ CONTACT SECTION -->
       <section id="contact">
         <h2 class="section-title">Contact</h2>
         <p class="section-desc">
-          For business enquiries, collaboration, or feedback, email me:
+          For business enquiries, collaboration, or feedback:
         </p>
 
         <div class="grid">
           <div class="card">
-            <div class="contact-row">
-              <!-- Change this email if you want -->
+            <div class="cta-row">
               <a class="btn primary" href="mailto:contact@simplyclassics.dev">Email Me</a>
-              <span class="pill">contact@simplyclassics.dev</span>
+              <a class="btn" href="mailto:contact@simplyclassics.dev">
+                contact@simplyclassics.dev
+              </a>
             </div>
 
-            <p class="small" style="margin-bottom:0;">
-              If your email app doesn’t open, you can copy the address above and message me directly.
+            <p class="small">
+              If your email client doesn’t open, you can copy the address above.
             </p>
           </div>
         </div>
