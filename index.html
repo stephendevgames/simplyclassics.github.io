@@ -27,6 +27,8 @@
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -136,6 +138,7 @@
       background: transparent;
       font-weight: 700;
       color: var(--text);
+      display: inline-block;
     }
 
     .btn.primary {
@@ -146,6 +149,9 @@
     }
 
     section { margin-top: 26px; }
+
+    /* Helps anchor links land nicely below sticky header */
+    section { scroll-margin-top: 105px; }
 
     .section-title {
       margin: 0 0 10px;
@@ -179,6 +185,23 @@
     .small {
       font-size: 13px;
       color: var(--muted);
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 13px;
     }
 
     footer {
@@ -249,7 +272,7 @@
               A clean Unity implementation focusing on UI flow, turn handling, win detection,
               and reset logic. Demonstrates structured game state and menu control.
             </p>
-            <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank">Watch Demo</a>
+            <a class="btn primary" href="https://youtu.be/KjEZP_vEK5E" target="_blank" rel="noopener">Watch Demo</a>
           </div>
 
           <div class="card half">
@@ -265,6 +288,28 @@
             <p class="small">
               Game feel, cleaner menus, stronger visual and audio feedback,
               and clearer presentation of core gameplay systems.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Added Contact section so #contact links work -->
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-desc">
+          For business enquiries, collaboration, or feedback, email me:
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="contact-row">
+              <!-- Change this email if you want -->
+              <a class="btn primary" href="mailto:contact@simplyclassics.dev">Email Me</a>
+              <span class="pill">contact@simplyclassics.dev</span>
+            </div>
+
+            <p class="small" style="margin-bottom:0;">
+              If your email app doesn’t open, you can copy the address above and message me directly.
             </p>
           </div>
         </div>
